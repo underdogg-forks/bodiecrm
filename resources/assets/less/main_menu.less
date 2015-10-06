@@ -1,0 +1,84 @@
+body.home {
+    aside#main-menu {
+        padding-top: 15px;
+        flex: 0 0 8rem;
+        order: -1;
+
+        ul {
+            margin-left: 0;
+
+            li {
+                font-size: 0.95rem;
+                line-height: 1.2rem;
+                list-style: none;
+                text-align: center;
+                color: #999;
+
+                &:hover {
+                    cursor: pointer;
+                }
+
+                &:hover, &.active {
+                    color: #fff;
+                    
+                    i, a, span.has-tip {
+                        color: #fff;
+                    }
+                }
+
+                &.active {
+                    background: @slate;
+                    //border-right: 3px solid @red;
+                }
+
+                i {
+                    font-size: 2.25rem;
+                    margin-bottom: 5px;
+                    color: #999;
+                }
+
+                a {
+                    display: block;
+                    padding: 1.25rem 0;
+                    position: relative;
+
+                    &.main_menu_leads {
+                        &:after {
+                            content: "\f0da";
+                            font-family: FontAwesome;
+                            position: absolute;
+                            right: 1.5rem;
+                            top: 40%;
+                            font-size: 1.25rem;
+                        }
+                    }
+                }
+
+                a, span.has-tip {
+                    font-weight: normal;
+                    cursor: pointer;
+                    text-decoration: none;
+                    color: #999;
+                    border-bottom: 0;
+                }
+
+                ul#drop {
+                    background: #FFF;
+                    border: 1px solid #ccc;
+
+                    li {
+                        padding: 0;
+                        text-align: left;
+
+                        a {
+                            color: #555;
+                            text-decoration: none;
+                            font-size: 1.1rem;
+                            padding: 1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

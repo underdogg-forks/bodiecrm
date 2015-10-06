@@ -1,0 +1,305 @@
+body.home {
+    section.campaigns {
+        #page-details {
+            button {
+                &.dropdown {
+                    font-size: .9125rem;
+                    padding: .95rem 2.75rem .86rem 1.75rem;
+
+                    i {
+                        font-size: 1.15rem;
+                    }
+                }
+            }
+        }
+
+        #campaigns_list {
+            #campaigns_list_container {
+                padding-left: 0px;
+
+                canvas {
+                    height: 150px;
+                }
+                
+                .panel {
+                    h4 {
+                        a {
+                            text-decoration: none;
+                        }
+                    }
+
+                    .campaigns_list_chart_item {
+                        height: 100px;
+                        width: 100%;
+                        display: table;
+                        border: none;
+
+                        h4 {
+                            display: table-cell;
+                            vertical-align: middle;
+                            color: @no-results-gray;
+                        }
+                    }
+
+                    .campaigns_list_details {
+                        margin-bottom: 2rem;
+
+                        span.has-tip {
+                            float: right !important;
+                        }
+                    }
+                    .campaigns_list_owner {
+                        margin-top: 1rem;
+                        padding-top: 1rem;
+                        border-top: 1px solid @light-gray-border;
+
+                        span.small {
+                            font-size: 0.9rem;
+                            color: @no-results-gray;
+                        }
+
+                        a.th {
+                            float: left;
+                            margin-right: .5rem;
+
+                            img {
+                                width: 35px;
+                            }
+                        }
+
+                        img {
+                            width: 35px;
+                        }
+
+                        a {
+                            text-decoration: none;
+                        }
+
+                        i {
+                            font-size: 1.15rem;
+                        }
+
+                        .icons {
+                            padding-top: 1rem;
+
+                            i {
+                                margin-left: 1rem;
+                                margin-right: .25rem;
+                            }
+                        }
+                    }
+
+                    #campaigns_list_users {
+                        margin-left: 4rem;
+
+                        #campaigns_list_users_icons {
+                            margin-left: 1rem;
+                            padding-top: .5rem;
+
+                            img { 
+                                margin-right: .25rem;
+                                width: 25px;
+                            }
+                        }
+                    }
+                }
+
+                #campaigns_list_empty {
+                    display: table;
+                    width: 100%;
+                    height: 50vh;
+
+                    h3 {
+                        display: table-cell;
+                        vertical-align: middle;
+                        color: @no-results-gray;
+                    }
+                }
+            }
+        }
+
+        #campaigns_create {
+            padding-left: 0px;
+        }
+
+        #campaign_single {
+            padding-top: 1rem;
+
+            #campaign_single_charts_main {
+                margin-top: 1rem;
+
+                canvas {
+                    height: 300px;
+                }
+                
+                .campaign_single_chart_item {
+                    height: 300px;
+                    width: 100%;
+                    display: table;
+
+                    h4 {
+                        display: table-cell;
+                        vertical-align: middle;
+                        color: @no-results-gray;
+                    }
+                }
+            }
+
+            #campaign_single_charts_attribution {
+                padding: 5rem 0px;
+
+                canvas {
+                    height: 200px;
+                }
+
+                .campaign_single_donut_chart {
+                    height: 200px;
+                    width: 100%;
+                    display: table;
+
+                    h4 {
+                        display: table-cell;
+                        vertical-align: middle;
+                        color: @no-results-gray;
+                    }
+                }
+            }
+
+            #campaign_single_landing_pages {
+                canvas {
+                    height: 100px;
+                }
+
+                .panel {
+                    h4 {
+                        a {
+                            text-decoration: none;
+                            display: block;
+                        }
+                    }
+
+                    .landing_page_list_chart_item {
+                        height: 105px;
+                        width: 100%;
+                        display: table;
+                        border: none;
+                        margin-bottom: 0;
+
+                        h4 {
+                            display: table-cell;
+                            vertical-align: middle;
+                            color: @no-results-gray;
+                        }
+                    }
+                   
+                    .landing_page_list_details {
+                        span.has-tip {
+                            float: right !important;
+                        }
+                    }
+                    .landing_page_list_owner {
+                        padding-top: 1rem;
+                        border-top: 1px solid @light-gray-border;
+
+                        .inline {
+                            vertical-align: middle;
+                        }
+
+                        a.th {
+                            float: left;
+                            margin-right: .5rem;
+
+                            img {
+                                width: 30px;
+                            }
+                        }
+
+                        a {
+                            text-decoration: none;
+                        }
+
+                        i {
+                            font-size: 1.15rem;
+                        }
+
+                        .icons {
+                            padding-top: 5px;
+
+                            i {
+                                margin-left: 1rem;
+                                margin-right: .25rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        #campaign_add_users {
+            #campaign_users_add {
+                padding-left: 0px;
+                margin-bottom: 4rem;
+
+                input.postfix {
+                    height: 2.75rem;
+                }
+            }
+
+            #campaign_users_current {
+                padding-left: 0;
+                
+                table {
+                    width: 100%;
+                    margin: 1rem 0 3rem;
+
+                    th, td {
+                        font-size: 1rem;
+                    }
+
+                    th {
+                        padding-top: 1rem;
+                        padding-bottom: 1rem;
+                    }
+                    
+                    th:first-child {
+                        width: 5rem;
+                    }
+
+                    th:nth-child(2) {
+                        padding-left: 1rem;
+                    }
+
+                    tr.deleting {
+                        td {
+                            background: lighten(@light-red, 10%);
+                            transition: background-color 0.25s ease;
+                        }
+                    }
+                }
+
+                .campaign_users_current_list {
+                    list-style: none;
+                    padding-left: 0px;
+                    margin-left: 0px;
+
+                    li {
+                        padding: 0.75rem 0px;
+                    }
+                }
+
+                a, h5 {
+                    margin-right: 0.75rem;
+                }
+
+                img {
+                    width: 50px;
+                }
+            }
+        }
+
+        #campaign_edit,
+        #campaign_landing_page_create {
+            padding-left: 0px;
+        }
+    }
+}

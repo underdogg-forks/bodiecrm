@@ -1,0 +1,17 @@
+{
+    "name" : "CRM",
+    "description": "CRM",
+    "version": "1.0",
+    "dependencies" : {
+        "foundation": "5.5.2",
+        "normalize.css": "3.0.3",
+        "animate.css": "3.4.0",
+        "prism": "latest",
+        "chartjs": "1.0.2",
+        "dropzone": "4.0.1",
+        "chosen": "latest"
+    },
+    "install" : {
+        "path" : "public/vendor"
+    }
+}

@@ -1,0 +1,187 @@
+body.home {
+    section.landing_pages {
+        textarea[name="email_to"] {
+            height: 10rem;
+        }
+
+        #page-details {
+            button {
+                &.dropdown {
+                    font-size: .9125rem;
+                    padding: .95rem 2.75rem .86rem 1.75rem;
+
+                    i {
+                        font-size: 1.15rem;
+                    }
+                }
+            }
+        }
+
+        &.create {
+            #main {
+                #landing_page_create {
+                    padding-left: 0px;
+
+                    #send_email_radio {
+                        margin-bottom: 2rem;
+                    }
+                }
+            }
+        }
+    
+        #landing_pages_list {
+            #landing_pages_list_container {
+                padding-left: 0px;
+
+                canvas {
+                    height: 100px;
+                }
+
+                .panel {
+                    h4 {
+                        a {
+                            text-decoration: none;
+                            display: block;
+                        }
+                    }
+
+                    .landing_page_list_details {
+                        margin-bottom: 2rem;
+                        
+                        span.has-tip {
+                            float: right !important;
+                        }
+                    }
+
+                    .landing_page_list_chart_item {
+                        height: 105px;
+                        width: 100%;
+                        display: table;
+                        border: none;
+
+                        h4 {
+                            display: table-cell;
+                            vertical-align: middle;
+                            color: @no-results-gray;
+                        }
+                    }
+
+                    .landing_page_list_owner {
+                        margin-top: 2rem;
+                        padding-top: 1rem;
+                        border-top: 1px solid @light-gray-border;
+
+                        .inline {
+                            vertical-align: middle;
+                        }
+
+                        a.th {
+                            float: left;
+                            margin-right: .5rem;
+
+                            img {
+                                width: 30px;
+                            }
+                        }
+
+                        a {
+                            text-decoration: none;
+                        }
+
+                        i {
+                            font-size: 1.15rem;
+                        }
+
+                        .icons {
+                            padding-top: 5px;
+
+                            i {
+                                margin-left: 1rem;
+                                margin-right: .15rem;
+                            }
+                        }
+                    }
+                }
+
+                #landing_pages_list_empty {
+                    display: table;
+                    width: 100%;
+                    height: 50vh;
+
+                    h3 {
+                        display: table-cell;
+                        vertical-align: middle;
+                        color: @no-results-gray;
+
+                        a {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+
+        #landing_page_single {
+            padding-top: 1rem;
+
+            #landing_page_charts_main {
+                canvas, .landing_page_single_leads_chart {
+                    height: 300px;
+                }
+            }
+
+            #landing_page_single_charts_attribution {
+                padding: 5rem 0px;
+
+                canvas, .landing_page_single_donut_chart {
+                    height: 200px;
+                }
+            }
+            
+            #landing_page_single_other_details {
+                margin-top: 2rem;
+                margin-bottom: 2rem;
+                padding: 0px 2rem;
+
+                .bg-gray {
+                    padding: 1rem 1rem 2rem;                    
+                }
+
+                .columns {
+                    padding-top: 1rem;
+                }
+
+                #emailing_to {
+                    img {
+                        width: 25px;
+                        margin-right: .25rem;
+                    }
+                }
+            }
+        }
+
+        #landing_page_add_users {
+            #landing_page_users_current {
+                padding-left: 2rem;
+
+                .landing_page_users_current_list {
+                    list-style: none;
+                    padding-left: 0px;
+                    margin-left: 0px;
+
+                    li {
+                        padding: 0.75rem 0px;
+                    }
+                }
+
+                a, h5 {
+                    margin-right: 0.75rem;
+                }
+
+                img {
+                    width: 50px;
+                }
+            }
+        }
+    }
+}
