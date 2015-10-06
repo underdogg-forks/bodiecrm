@@ -35,7 +35,7 @@
     <header class = "bg-black">
         <div class = "wrapper row">
             <div class = "large-4 columns">
-                <h3><a href = "/home">Home</a></h3>
+                <h3><a href = "/campaigns">Home</a></h3>
             </div>
 
             @if ( Auth::check() )
