@@ -81,10 +81,6 @@
             width: 100%;
         }
 
-        table.body-wrap .container {
-            border: 1px solid #f0f0f0;
-        }
-
 
         /* -------------------------------------
         FOOTER
@@ -171,7 +167,7 @@
 <body bgcolor="#f6f6f6">
 
     <!-- body -->
-    <table class="body-wrap" bgcolor="#f6f6f6">
+    <table class="body-wrap">
         <tr>
             <td></td>
             <td class="container" bgcolor="#FFFFFF">
@@ -199,31 +195,5 @@
         </tr>
     </table>
     <!-- /body -->
-
-    <!-- footer -->
-    <table class="footer-wrap">
-        <tr>
-            <td></td>
-            <td class="container">
-
-                <!-- content -->
-                <div class="content">
-                    <table>
-                        <tr>
-                            <td align="center">
-                                <p>Don't like these annoying emails? <a href="#"><unsubscribe>Unsubscribe</unsubscribe></a>.
-                                </p>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <!-- /content -->
-
-            </td>
-            <td></td>
-        </tr>
-    </table>
-    <!-- /footer -->
-
 </body>
 </html>
