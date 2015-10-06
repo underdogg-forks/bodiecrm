@@ -152,7 +152,6 @@ return [
 
 
          'Jenssegers\Agent\AgentServiceProvider',
-         'Maatwebsite\Excel\ExcelServiceProvider',
          'Camroncade\Timezone\TimezoneServiceProvider',
     ],
 
@@ -205,7 +204,6 @@ return [
         'Agent'      => 'Jenssegers\Agent\Facades\Agent',
         'Debugbar'   => Barryvdh\Debugbar\Facade::class,
         'Datatables' => yajra\Datatables\Datatables::class,
-        'Excel'      => 'Maatwebsite\Excel\Facades\Excel',
         'Hashids'    => Vinkla\Hashids\Facades\Hashids::class
     ],
 
