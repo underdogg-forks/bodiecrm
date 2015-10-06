@@ -11,9 +11,9 @@
         <div class = "wrapper">
             <div id = "front-slider" class = "text-center">
                 <h1 class = "animated bounceInDown">Intro text here</h1>
-                <h2 class = "inline animated fadeInLeft">Tiny</h2>
+                <h2 class = "inline animated fadeInLeft">Bodie</h2>
                 <h2 class = "inline animated fadeInRight">CRM</h2>
-                <h3 class = "animated fadeInUp">Tiny. Simple. CRM</h3>
+                <h3 class = "animated fadeInUp">BodieCRM</h3>
             </div>
         </div>
 
