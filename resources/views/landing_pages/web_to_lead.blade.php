@@ -77,7 +77,7 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-67444923-1', { 'cookieDomain': 'none' });
+  ga('create', 'UA-68533912-1', { 'cookieDomain': 'none' });
   ga('require', 'Attribution', {
     form_id:            '{{ $landing_page->auth_key }}',
     landing_page_id:    'landing_page_id',
