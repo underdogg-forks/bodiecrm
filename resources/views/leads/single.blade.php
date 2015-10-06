@@ -59,12 +59,6 @@
 
     <div id = "leads_single" class = "row">
         <div id = "leads_single_users" class = "meta small-12 columns">
-
-            <!--
-            <div class = "leads_single_progress_bar small-6 columns">
-                {{-- @include('leads.progress') --}}
-            </div>
-            -->
             
             <div class = "small-6 columns text-left">
                 @include('leads.users')

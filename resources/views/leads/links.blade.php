@@ -26,8 +26,6 @@
             <li><a href = "{{ url('leads/' . $lead->id) }}/edit">Edit lead details</a></li>
             <li><a href = "{{ url('leads/' . $lead->id) }}/assign_lead">Manage lead users</a></li>
             <li class = "divider"></li>
-            <li><a href = "{{ url('leads/' . $lead->id) }}/convert">Convert lead</a></li>
-            <li><a href = "{{ url('leads/' . $lead->id) }}/close">Close lead</a></li>
             <li><a href = "{{ url('leads/' . $lead->id) }}/delete">Delete lead</a></li>
             @endif
         </ul>
