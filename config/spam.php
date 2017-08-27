@@ -1,9 +1,7 @@
 <?php
-    /**
-     * Spam user agents
-     */
-    
-    return [
-        
-    ];
+/**
+ * Spam user agents
+ */
+return [
+];
 ?>

@@ -1,11 +1,9 @@
 <?php
-
 namespace App\Events;
 
 use App\Events\Event;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-
 use Illuminate\Support\Collection;
 use App\Lead;
 
@@ -23,8 +21,8 @@ class LogLeadActivity extends Event
      */
     public function __construct(Lead $lead, $activity, Collection $collection = null)
     {
-        $this->lead       = $lead;
-        $this->activity   = $activity;
+        $this->lead = $lead;
+        $this->activity = $activity;
         $this->collection = $collection;
     }
 

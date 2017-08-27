@@ -1,9 +1,8 @@
 <?php
-    
-    /**
-     * General site paths
-     */
-    return [
-        'user_avatars' => '/img/user/'
-    ];
+/**
+ * General site paths
+ */
+return [
+    'user_avatars' => '/img/user/'
+];
 ?>

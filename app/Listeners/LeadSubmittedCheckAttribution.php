@@ -1,15 +1,12 @@
 <?php
-
 /**
  * Lead submitted, check if corresponding attribution data exists
  */
-
 namespace App\Listeners;
 
 use App\Events\LeadSubmitted;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-
 use App\Attribution;
 
 class LeadSubmittedCheckAttribution
@@ -19,14 +16,15 @@ class LeadSubmittedCheckAttribution
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct()
+    {
 
     }
 
     /**
      * Handle the event.
      *
-     * @param  LeadSubmitted  $event
+     * @param  LeadSubmitted $event
      * @return Boolean
      */
     public function handle(LeadSubmitted $event)
@@ -37,17 +35,14 @@ class LeadSubmittedCheckAttribution
             ->where('lead_id', 0)
             ->orderBy('created_at', 'DESC')
             ->first();
-
         // If attribution entry is found already, set the lead id
-        if ( ! is_null($attribution) ) {
-            $attribution->lead_id         = $event->lead->id;
+        if (!is_null($attribution)) {
+            $attribution->lead_id = $event->lead->id;
             $event->lead->has_attribution = true;
-            
             $attribution->save();
             $event->lead->save();
 
         }
-
         return true;
     }
 }

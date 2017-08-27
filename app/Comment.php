@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
@@ -14,15 +13,15 @@ class Comment extends Model
      * @var array
      */
     protected $fillable = [
-        'landing_page_id', 
-        'lead_id', 
-        'user_id', 
+        'landing_page_id',
+        'lead_id',
+        'user_id',
         'comment'
     ];
 
     /**
      * Get the user that this comment belongs to
-     * 
+     *
      * @return Object
      */
     public function user()
@@ -32,7 +31,7 @@ class Comment extends Model
 
     /**
      * Get the landing page that this comment belongs to
-     * 
+     *
      * @return Object
      */
     public function landing_page()
@@ -42,7 +41,7 @@ class Comment extends Model
 
     /**
      * Get the lead that this comment belongs to
-     * 
+     *
      * @return Object
      */
     public function lead()

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Helpers;
 
 use App\Helpers\Contracts\ChartContract;
@@ -10,7 +9,7 @@ class Chart implements ChartContract
 {
     /**
      * Start and end dates
-     * 
+     *
      * @var Carbon
      */
     private $start_date;
@@ -18,28 +17,27 @@ class Chart implements ChartContract
 
     /**
      * Dataset collection
-     * 
+     *
      * @var Collection
      */
     private $dataset;
 
-
     /**
      * Init
-     * 
+     *
      * @param Carbon $start_date
      * @param Carbon $end_date
      */
     public function init($start_date, $end_date)
     {
-        $this->dataset    = collect();
+        $this->dataset = collect();
         $this->start_date = $start_date;
-        $this->end_date   = $end_date;
+        $this->end_date = $end_date;
     }
 
     /**
      * Return the current dataset
-     * 
+     *
      * @return Collection
      */
     public function getDataSet()
@@ -49,7 +47,7 @@ class Chart implements ChartContract
 
     /**
      * Set line and bar dataset
-     * 
+     *
      * @param Collection $data
      * @param String $title
      * @param Integer $i
@@ -58,24 +56,20 @@ class Chart implements ChartContract
     {
         // Copy the Carbon instance of start_date
         $iterate_date = $this->start_date->copy();
-        $color        = new Color(config('chartjs.colors.' . $i));
-        
-        $collection   = collect();
-
+        $color = new Color(config('chartjs.colors.' . $i));
+        $collection = collect();
         // Set dates with leads
-        while ( $iterate_date <= $this->end_date ) {
+        while ($iterate_date <= $this->end_date) {
             $count = isset($data[$iterate_date->toDateString()]) ? $data[$iterate_date->toDateString()] : 0;
-
             $collection->push($count);
             $iterate_date->addDay();
         }
-
         $this->dataset = collect([
-            'label'                => $title,
-            'data'                 => $collection,
-            'fillColor'            => '#' . $color->getHex(),
-            'strokeColor'          => '#' . $color->getHex(),
-            'pointColor'           => '#' . $color->getHex(),
+            'label' => $title,
+            'data' => $collection,
+            'fillColor' => '#' . $color->getHex(),
+            'strokeColor' => '#' . $color->getHex(),
+            'pointColor' => '#' . $color->getHex(),
             'pointHighlightStroke' => '#' . $color->getHex()
         ]);
     }
@@ -89,15 +83,14 @@ class Chart implements ChartContract
     public function getLineBarChart($dataset = null)
     {
         // If user is passing a custom dataset, set it
-        if ( $dataset ) {
+        if ($dataset) {
             return collect([
-                'labels'   => $this->setLabel(),
+                'labels' => $this->setLabel(),
                 'datasets' => $dataset
             ])->toJson();
-        }
-        else {
+        } else {
             return collect([
-                'labels'   => $this->setLabel(),
+                'labels' => $this->setLabel(),
                 'datasets' => [$this->dataset]
             ])->toJson();
         }
@@ -105,30 +98,26 @@ class Chart implements ChartContract
 
     /**
      * Set and get pie chart
-     * 
+     *
      * @param  Collection $data
      * @return Collection
      */
     public function getPieChart($data)
     {
-        foreach ( $data as $key => $value ) {
-            $i             = 0;
+        foreach ($data as $key => $value) {
+            $i = 0;
             $dataset[$key] = collect();
-
-            foreach ( $data->get($key) as $k => $v ) {
-                $color             = new Color(config('chartjs.colors.' . $i));
-
+            foreach ($data->get($key) as $k => $v) {
+                $color = new Color(config('chartjs.colors.' . $i));
                 $dataset[$key]->push([
-                    'value'     => $v,
-                    'color'     => '#' . $color->lighten(20),
+                    'value' => $v,
+                    'color' => '#' . $color->lighten(20),
                     'highlight' => '#' . $color->lighten(25),
-                    'label'     => $k
+                    'label' => $k
                 ]);
-
                 $i++;
             }
         }
-
         return $dataset;
     }
 
@@ -141,14 +130,11 @@ class Chart implements ChartContract
     {
         // Copy the Carbon instance of start_date
         $iterate_date = $this->start_date->copy();
-        $labels       = collect();
-
-        while ( $iterate_date <= $this->end_date ) {
+        $labels = collect();
+        while ($iterate_date <= $this->end_date) {
             $labels->push($iterate_date->format('M d'));
-
             $iterate_date->addDay();
         }
-
         return $labels;
     }
 }

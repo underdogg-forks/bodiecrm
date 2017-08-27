@@ -1,9 +1,7 @@
 <?php
-
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
 use DB;
 
 class Attribution extends Model
@@ -30,43 +28,31 @@ class Attribution extends Model
      */
     protected $hidden = [];
 
-
     /**
      * The attributes that should be mutated to dates.
      *
      * @var Array
      */
     protected $dates = [
-        'created_at', 
-        'updated_at', 
+        'created_at',
+        'updated_at',
         'converting_timestamp',
         'original_timestamp'
     ];
 
-
-
-
-
-
     /**
      * Get the lead for this attribution data
-     * 
+     *
      * @return Object
      */
-    public function lead() {
+    public function lead()
+    {
         return $this->hasOne('App\Lead');
     }
 
-
-
-
-
-
-
-
     /**
      * Get converting medium
-     * 
+     *
      * @param  String $value
      * @return String
      */
@@ -77,7 +63,7 @@ class Attribution extends Model
 
     /**
      * Get original medium
-     * 
+     *
      * @param  String $value
      * @return String
      */
@@ -88,7 +74,7 @@ class Attribution extends Model
 
     /**
      * Get converting source
-     * 
+     *
      * @param  String $value
      * @return String
      */
@@ -99,7 +85,7 @@ class Attribution extends Model
 
     /**
      * Get original source
-     * 
+     *
      * @param  String $value
      * @return String
      */
@@ -110,7 +96,7 @@ class Attribution extends Model
 
     /**
      * Get converting landing page
-     * 
+     *
      * @param  String $value
      * @return URL
      */
@@ -121,7 +107,7 @@ class Attribution extends Model
 
     /**
      * Get converting landing page
-     * 
+     *
      * @param  String $value
      * @return URL
      */
@@ -132,7 +118,7 @@ class Attribution extends Model
 
     /**
      * Get refer URL
-     * 
+     *
      * @param  String $value
      * @return URL
      */
@@ -141,18 +127,9 @@ class Attribution extends Model
         return '<a href = "' . $value . '">' . $value . '</a>';
     }
 
-
-
-
-
-
-
-    
-
-
     /**
      * Get total lead counts by attribution columns
-     * 
+     *
      * @param  Array $landing_pages | array of landing page IDs
      * @return Collection
      */
@@ -160,28 +137,15 @@ class Attribution extends Model
     {
         return collect([
             'converting_medium' => Attribution::getLeadCount($landing_pages, 'converting_medium'),
-            'original_medium'   => Attribution::getLeadCount($landing_pages, 'original_medium'),
+            'original_medium' => Attribution::getLeadCount($landing_pages, 'original_medium'),
             'converting_source' => Attribution::getLeadCount($landing_pages, 'converting_source'),
-            'original_source'   => Attribution::getLeadCount($landing_pages, 'original_source')
+            'original_source' => Attribution::getLeadCount($landing_pages, 'original_source')
         ]);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      * Get lead count by attribution column
-     * 
+     *
      * @param  Array $landing_pages
      * @param  String $column
      * @return Collection
@@ -189,18 +153,16 @@ class Attribution extends Model
     private static function getLeadCount($landing_pages, $column)
     {
         $medium = Attribution::select(
-                DB::raw("IFNULL($column, 'None') AS label"),
-                DB::raw("COUNT('id') AS total")
-            )
+            DB::raw("IFNULL($column, 'None') AS label"),
+            DB::raw("COUNT('id') AS total")
+        )
             ->whereIn('landing_page_id', $landing_pages)
             ->groupBy($column)
             ->orderBy('total', 'desc')
             ->lists('total', 'label');
-
-        if ( ! $medium->isEmpty() ) {
+        if (!$medium->isEmpty()) {
             return $medium;
         }
-
         return collect();
     }
 }

@@ -1,9 +1,7 @@
 <?php
-
 namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
-
 use Auth;
 
 class UploadRequest extends FormRequest
@@ -16,9 +14,9 @@ class UploadRequest extends FormRequest
      */
     public function authorize()
     {
-        return ( Auth::id() == $this->route('user') ) ? true : false;
+        return (Auth::id() == $this->route('user')) ? true : false;
     }
-   
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -27,7 +25,7 @@ class UploadRequest extends FormRequest
     public function rules()
     {
         return [
-            'file'  => 'required|image'
+            'file' => 'required|image'
         ];
     }
 }

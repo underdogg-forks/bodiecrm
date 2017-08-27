@@ -1,9 +1,7 @@
 <?php
-
 namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
-
 use Auth;
 
 class UpdatePasswordRequest extends FormRequest
@@ -16,9 +14,9 @@ class UpdatePasswordRequest extends FormRequest
      */
     public function authorize()
     {
-        return ( Auth::id() == $this->route('user') ) ? true : false;
+        return (Auth::id() == $this->route('user')) ? true : false;
     }
-   
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -27,7 +25,7 @@ class UpdatePasswordRequest extends FormRequest
     public function rules()
     {
         return [
-            'password'              => 'required|confirmed|min:8',
+            'password' => 'required|confirmed|min:8',
             'password_confirmation' => 'required'
         ];
     }

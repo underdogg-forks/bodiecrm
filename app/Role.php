@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
@@ -7,7 +6,7 @@ use Auth;
 
 class Role extends Model
 {
-    
+
     /**
      * The database table used by the model.
      *
@@ -15,16 +14,10 @@ class Role extends Model
      */
     protected $table = 'roles';
 
-
-
-
-
-
     // Accessors
-    
     /**
      * Get the role title
-     * 
+     *
      * @param  String $title
      * @return String
      */

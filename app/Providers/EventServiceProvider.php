@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Providers;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
@@ -13,13 +12,13 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\LeadSubmitted'          => [
+        'App\Events\LeadSubmitted' => [
             'App\Listeners\LeadSubmittedCheckAttribution',
         ],
-        'App\Events\AttributionSubmitted'   => [
+        'App\Events\AttributionSubmitted' => [
             'App\Listeners\AttributionSubmittedCheckLead'
         ],
-        'App\Events\LogLeadActivity'        => [
+        'App\Events\LogLeadActivity' => [
             'App\Listeners\AddLeadActivityToLog'
         ]
     ];
@@ -27,7 +26,7 @@ class EventServiceProvider extends ServiceProvider
     /**
      * Register any other events for your application.
      *
-     * @param  \Illuminate\Contracts\Events\Dispatcher  $events
+     * @param  \Illuminate\Contracts\Events\Dispatcher $events
      * @return void
      */
     public function boot(DispatcherContract $events)

@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
@@ -15,7 +14,7 @@ class Lead_Log extends Model
      */
     protected $fillable = [
         'lead_id',
-        'user_id', 
+        'user_id',
         'activity'
     ];
 }

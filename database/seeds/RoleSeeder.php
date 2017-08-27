@@ -1,7 +1,5 @@
 <?php
-
 use Illuminate\Database\Seeder;
-
 use App\Role;
 
 class RoleSeeder extends Seeder
@@ -14,11 +12,9 @@ class RoleSeeder extends Seeder
     public function run()
     {
         DB::table('roles')->delete();
-
         Role::create([
             'title' => 'admin'
         ]);
-        
         Role::create([
             'title' => 'user'
         ]);

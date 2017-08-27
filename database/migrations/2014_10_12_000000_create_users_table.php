@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -17,16 +16,12 @@ class CreateUsersTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('company');
-            
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->string('profile_url', 200)->nullable();
-            
             $table->string('timezone')->default('America/Los_Angeles');
-
             $table->boolean('active')->default(0);
             $table->boolean('verified')->default(0);
-            
             $table->rememberToken();
             $table->timestamps();
         });

@@ -1,15 +1,14 @@
 <?php
-
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
 use Carbon\Carbon;
 use DB;
 use Auth;
 use App\Lead;
 
-class Landing_Page extends Model {
+class Landing_Page extends Model
+{
 
     /**
      * The database table used by the model.
@@ -43,23 +42,20 @@ class Landing_Page extends Model {
      */
     protected $hidden = [];
 
-
     /**
      * Casts
-     * 
+     *
      * @var array
      */
     protected $casts = [
-        'active'     => 'boolean',
+        'active' => 'boolean',
         'send_email' => 'boolean',
-        'email_to'   => 'array'
+        'email_to' => 'array'
     ];
-
-
 
     /**
      * Get the campaign associated with this landing page
-     * 
+     *
      * @return Object
      */
     public function campaign()
@@ -69,7 +65,7 @@ class Landing_Page extends Model {
 
     /**
      * Get the leads associated with this landing page
-     * 
+     *
      * @return Object
      */
     public function leads()
@@ -79,7 +75,7 @@ class Landing_Page extends Model {
 
     /**
      * Get users to email for this landing page
-     * 
+     *
      * @return Object
      */
     public function users_to_email()
@@ -89,7 +85,7 @@ class Landing_Page extends Model {
 
     /**
      * Get user owner
-     * 
+     *
      * @return Object
      */
     public function user()
@@ -99,7 +95,7 @@ class Landing_Page extends Model {
 
     /**
      * Get the comments associated with this landing page
-     * 
+     *
      * @return Object
      */
     public function comments()
@@ -107,27 +103,20 @@ class Landing_Page extends Model {
         return $this->hasMany('App\Landing_Page_Comments', 'landing_page_id', 'id');
     }
 
-
-
-
-
-
     /**
      * Get leads
-     * 
+     *
      * @param  String $length
      * @return Collection
      */
     public function getLeads($length)
     {
         $landing_pages = [$this->id];
-        $lists         = collect();
-        
-        $date          = ( $length == 'month' ) ?
+        $lists = collect();
+        $date = ($length == 'month') ?
             Carbon::today()->subMonth() :
             Carbon::today()->subWeek();
-
-        $leads         = Lead::select(
+        $leads = Lead::select(
             array(
                 'created_at',
                 DB::raw('COUNT(*) AS count')
@@ -137,51 +126,37 @@ class Landing_Page extends Model {
             ->groupBy('created_at')
             ->orderBy('created_at', 'DESC')
             ->get();
-
-        if ( ! $leads->isEmpty() ) {
-
+        if (!$leads->isEmpty()) {
             // Can't use lists() as it destroys date Carbon object
-            foreach ( $leads as $lead ) {
+            foreach ($leads as $lead) {
                 $d = $lead->created_at->timezone(Auth::user()->timezone)->toDateString();
-
-                if ( $lists->has($d) ) {
-                    $lists[$d] += $lead->count;    
-                }
-                else {
+                if ($lists->has($d)) {
+                    $lists[$d] += $lead->count;
+                } else {
                     $lists[$d] = $lead->count;
                 }
             }
-
             return $lists;
         }
-
         return collect();
     }
 
     /**
      * Check whether user is admin for this landing page's campaign
-     * 
+     *
      * @return Boolean
      */
     public function isAdmin()
     {
-        if ( $this->campaign->users()->where('user_id', Auth::id())->first()->pivot->role_id == config('roles.admin') ) {
+        if ($this->campaign->users()->where('user_id', Auth::id())->first()->pivot->role_id == config('roles.admin')) {
             return true;
         }
-
         return false;
     }
 
-
-
-
-
-
-
-
     /**
      * Get the landing page title
-     * 
+     *
      * @param  String $title
      * @return String
      */

@@ -1,9 +1,7 @@
 <?php
-
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
 use App\Helpers\Chart;
 
 /**
@@ -11,7 +9,7 @@ use App\Helpers\Chart;
  */
 class ChartServiceProvider extends ServiceProvider
 {
-    
+
     /**
      * Bootstrap the application services.
      *
@@ -30,7 +28,7 @@ class ChartServiceProvider extends ServiceProvider
     public function register()
     {
         // Bind the contract to concert Chart() class
-        $this->app->bind('App\Helpers\Contracts\ChartContract', function() {
+        $this->app->bind('App\Helpers\Contracts\ChartContract', function () {
             return new Chart();
         });
     }

@@ -1,5 +1,4 @@
 <?php
-
 /*
  * This file is part of Laravel Hashids.
  *
@@ -8,9 +7,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Default Connection Name
@@ -21,9 +18,7 @@ return [
     | connections at once using the manager class.
     |
     */
-
     'default' => 'main',
-
     /*
     |--------------------------------------------------------------------------
     | Hashids Connections
@@ -34,21 +29,16 @@ return [
     | you would like.
     |
     */
-
     'connections' => [
-
         'main' => [
-            'salt'     => 'your-salt-string',
-            'length'   => 'your-length-integer',
+            'salt' => 'your-salt-string',
+            'length' => 'your-length-integer',
             'alphabet' => 'your-alphabet-string',
         ],
-
         'alternative' => [
-            'salt'     => 'your-salt-string',
-            'length'   => 'your-length-integer',
+            'salt' => 'your-salt-string',
+            'length' => 'your-length-integer',
             'alphabet' => 'your-alphabet-string',
         ],
-
     ],
-
 ];

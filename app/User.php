@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use Illuminate\Auth\Authenticatable;
@@ -7,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-
 use Auth;
 
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
+class User extends Model implements AuthenticatableContract, CanResetPasswordContract
+{
     use Authenticatable, CanResetPassword;
 
     /**
@@ -26,13 +25,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $fillable = [
-        'first_name', 
-        'last_name', 
-        'company', 
-        'email', 
+        'first_name',
+        'last_name',
+        'company',
+        'email',
         'password'
     ];
-
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -40,21 +38,17 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $hidden = [
-        'password', 
-        'remember_token', 
-        'verified', 
+        'password',
+        'remember_token',
+        'verified',
         'active'
     ];
-
-
-
-
 
     /**
      * Get the campaigns associated to this user
      *
      * Checks if user has any role permissions on the campaign
-     * 
+     *
      * @return Collection
      */
     public function campaigns()
@@ -64,75 +58,66 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     /**
      * Get the active landing pages associated to this user
-     * 
+     *
      * @return Collection
      */
     public function landing_pages_active()
     {
-        $campaigns      = Auth::user()
+        $campaigns = Auth::user()
             ->campaigns()
             ->where('active', 1)
-            ->with(['landing_pages' => function($q) {
+            ->with(['landing_pages' => function ($q) {
                 $q->orderBy('created_at', 'DESC');
             }])
             ->get();
-
-        $landing_pages  = collect();
-
+        $landing_pages = collect();
         // Get active landing pages
-        foreach ( $campaigns as $campaign ) {
+        foreach ($campaigns as $campaign) {
             $landing_pages = $landing_pages->merge($campaign->landing_pages()->where('active', 1)->get());
         }
-
         return $landing_pages;
     }
 
     /**
      * Get the archived landing pages associated to this user
-     * 
+     *
      * @return Collection
      */
     public function landing_pages_archived()
     {
-        $campaigns      = Auth::user()
+        $campaigns = Auth::user()
             ->campaigns()
             ->where('active', 0)
-            ->with(['landing_pages' => function($q) {
+            ->with(['landing_pages' => function ($q) {
                 $q->orderBy('created_at', 'DESC');
             }])
             ->get();
-
-        $landing_pages  = collect();
-
-        foreach ( $campaigns as $campaign ) {
+        $landing_pages = collect();
+        foreach ($campaigns as $campaign) {
             $landing_pages = $landing_pages->merge($campaign->landing_pages);
         }
-
         return $landing_pages;
     }
 
     /**
      * Get all user leads
-     * 
+     *
      * @return Collection
      */
     public function all_leads()
     {
-        $landing_pages  = Auth::user()
+        $landing_pages = Auth::user()
             ->landing_pages();
-
-        $leads          = collect();
-
-        foreach ( $landing_pages as $landing_page ) {
+        $leads = collect();
+        foreach ($landing_pages as $landing_page) {
             $leads = $leads->merge($landing_page->leads);
         }
-
         return $leads;
     }
 
     /**
      * Get leads where user is owner
-     * 
+     *
      * @return Collection
      */
     public function your_leads()
@@ -142,7 +127,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     /**
      * Get the roles associated to this user
-     * 
+     *
      * @return Collection
      */
     public function roles()
@@ -150,10 +135,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->belongsToMany('App\Role', 'user_has_roles', 'user_id', 'role_id');
     }
 
-
     /**
      * Get the campaign comments associated to this user
-     * 
+     *
      * @return Collection
      */
     public function campaign_comments()
@@ -165,10 +149,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     /*************
      * Accessors
      *************/
-
     /**
      * Get user first name
-     * 
+     *
      * @param  String $title
      * @return String
      */
@@ -179,7 +162,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     /**
      * Get user last name
-     * 
+     *
      * @param  String $title
      * @return String
      */
@@ -190,7 +173,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     /**
      * Accessor to get fullname
-     * 
+     *
      * @param  String $value | null
      * @return String
      */

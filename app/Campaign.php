@@ -1,16 +1,14 @@
 <?php
-
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
 use Carbon\Carbon;
 use DB;
 use Auth;
-
 use App\Lead;
 
-class Campaign extends Model {
+class Campaign extends Model
+{
 
     /**
      * The database table used by the model.
@@ -25,9 +23,9 @@ class Campaign extends Model {
      * @var array
      */
     protected $fillable = [
-        'user_id', 
-        'title', 
-        'description', 
+        'user_id',
+        'title',
+        'description',
         'active'
     ];
 
@@ -38,25 +36,18 @@ class Campaign extends Model {
      */
     protected $hidden = [];
 
-
-
     /**
      * Casts
-     * 
+     *
      * @var array
      */
     protected $casts = [
-        'active'    => 'boolean'
+        'active' => 'boolean'
     ];
-
-
-
-
-
 
     /**
      * Get the landing pages associated with this campaign
-     * 
+     *
      * @return Object
      */
     public function landing_pages()
@@ -66,17 +57,17 @@ class Campaign extends Model {
 
     /**
      * Get user owner
-     * 
+     *
      * @return Object
      */
     public function user()
     {
         return $this->belongsTo('App\User');
     }
-    
+
     /**
      * Get the leads associated with this landing page
-     * 
+     *
      * @return Object
      */
     public function users()
@@ -86,7 +77,7 @@ class Campaign extends Model {
 
     /**
      * Get campaign leads through landing pages
-     * 
+     *
      * @return Object
      */
     public function leads()
@@ -96,7 +87,7 @@ class Campaign extends Model {
 
     /**
      * Get the comments associated with this landing page
-     * 
+     *
      * @return Object
      */
     public function comments()
@@ -104,41 +95,33 @@ class Campaign extends Model {
         return $this->hasMany('App\Campaign_Comments', 'campaign_id', 'id');
     }
 
-
-
-
-
     /**
      * Check whether user is admin for this campaign
-     * 
+     *
      * @return Boolean
      */
     public function isAdmin()
     {
-        if ( $this->users()->where('user_id', Auth::id())->first()->pivot->role_id == config('roles.admin') ) {
+        if ($this->users()->where('user_id', Auth::id())->first()->pivot->role_id == config('roles.admin')) {
             return true;
         }
-
         return false;
     }
 
-
     /**
      * Get leads
-     * 
+     *
      * @param  String $length
      * @return Collection
      */
     public function getLeads($length)
     {
         $landing_pages = $this->landing_pages()->lists('id');
-        $lists         = collect();
-        
-        $date          = ( $length == 'month' ) ?
+        $lists = collect();
+        $date = ($length == 'month') ?
             Carbon::today()->subMonth() :
             Carbon::today()->subWeek();
-
-        $leads         = Lead::select(
+        $leads = Lead::select(
             array(
                 'created_at',
                 DB::raw('COUNT(*) AS count')
@@ -148,24 +131,18 @@ class Campaign extends Model {
             ->groupBy('created_at')
             ->orderBy('created_at', 'DESC')
             ->get();
-
-        if ( ! $leads->isEmpty() ) {
-
+        if (!$leads->isEmpty()) {
             // Can't use lists() as it destroys date Carbon object
-            foreach ( $leads as $lead ) {
+            foreach ($leads as $lead) {
                 $d = $lead->created_at->timezone(Auth::user()->timezone)->toDateString();
-
-                if ( $lists->has($d) ) {
-                    $lists[$d] += $lead->count;    
-                }
-                else {
+                if ($lists->has($d)) {
+                    $lists[$d] += $lead->count;
+                } else {
                     $lists[$d] = $lead->count;
                 }
             }
-
             return $lists;
         }
-
         return collect();
     }
 }

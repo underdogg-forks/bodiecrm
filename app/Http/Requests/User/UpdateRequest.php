@@ -1,9 +1,7 @@
 <?php
-
 namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
-
 use Auth;
 
 class UpdateRequest extends FormRequest
@@ -16,9 +14,9 @@ class UpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return ( Auth::id() == $this->route('user') ) ? true : false;
+        return (Auth::id() == $this->route('user')) ? true : false;
     }
-   
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -28,10 +26,10 @@ class UpdateRequest extends FormRequest
     {
         return [
             'first_name' => 'required|max:255',
-            'last_name'  => 'required|max:255',
-            'company'    => 'max:255',
-            'email'      => 'required|email|max:255|unique:users,email,' . Auth::id(),
-            'timezone'   => 'required'
+            'last_name' => 'required|max:255',
+            'company' => 'max:255',
+            'email' => 'required|email|max:255|unique:users,email,' . Auth::id(),
+            'timezone' => 'required'
         ];
     }
 }

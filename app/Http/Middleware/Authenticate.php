@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Middleware;
 
 use Closure;
@@ -17,7 +16,7 @@ class Authenticate
     /**
      * Create a new filter instance.
      *
-     * @param  Guard  $auth
+     * @param  Guard $auth
      * @return void
      */
     public function __construct(Guard $auth)
@@ -28,21 +27,19 @@ class Authenticate
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure $next
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
-        if ( $this->auth->guest() ) {
+        if ($this->auth->guest()) {
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);
-            }
-            else {
+            } else {
                 return redirect()->guest('auth/login');
             }
         }
-
         return $next($request);
     }
 }
